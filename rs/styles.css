@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* scroll */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-color: #000000; 
+    color: white; 
+    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+    z-index: 1; /* Para garantir que o body esteja acima do pseudo-elemento */
+}
+
+body::before {
+    content: ''; /* Necessário para criar o pseudo-elemento */
+    position: fixed; /* Mudado para fixed para cobrir toda a tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 50, 50, 0.7); /* Cinza com 50% de opacidade */
+    z-index: 0; /* Para ficar atrás do conteúdo */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative; 
+    z-index: 1; /* Para garantir que o conteúdo esteja acima da sobreposição */
+    padding: 20px; 
+    color: white; /* Cor do texto para melhor legibilidade */
+}
+
+.navbar {
+    width: 100%; /* Garante que a navbar ocupe 100% da largura */
+    padding: 15px;
+    background-color: rgba(20, 20, 20, 0.8); /* Cor de fundo para a navbar */
+    padding: 15px; /* Ajuste o padding conforme necessário */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra, se desejado */
+    position: relative; /* Pode ser mantido se necessário */
+    z-index: 1000; /* Mantém a navbar acima do conteúdo */
+    box-sizing: border-box;
+    margin: auto;
+    border-radius: 10px;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ff66b2;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #ff33cc;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff0099;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66b2;
+}
+
+.header {
+    text-align: center;
+    margin-top: 100px;
+    padding: 20px;
+    margin-top: 5px;
+}
+
+.neon-title {
+    font-size: 2.5em;
+    color: #ff66b2;
+    text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66b2, 0 0 30px #ff99cc;
+    animation: neon-pulse 2s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from {
+        text-shadow: 0 0 5px #ff0099, 0 0 10px #ff66b2;
+    }
+    to {
+        text-shadow: 0 0 10px #ff0099, 0 0 20px #ff66b2, 0 0 40px #ff66b2;
+    }
+}
+
+.section-intro, .reasons-section, .video-section {
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.2), rgba(255, 105, 180, 0.15));
+    margin: 20px 0;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 40px;
+    
+}
+
+.section-intro:hover, .reasons-section:hover, .video-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
+}
+
+.reasons-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    text-align: left;
+}
+
+.reasons-list li {
+    background: rgba(255, 102, 178, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px #ff66b2;
+    transition: all 0.5s, transform 0.3s;
+    opacity: 0; /* Mantém invisível inicialmente */
+    transform: translateY(30px);
+    border: 2px solid rgba(25, 19, 22, 0.5); /* Contorno de 2px de espessura com uma cor rosa clara */
+}
+
+.reasons-list li.show {
+    opacity: 1; /* Corrigido de 3 para 1 */
+    transform: translateY(0);
+    visibility: visible; 
+}
+
+.reasons-list li:hover {
+    background: rgba(255, 102, 178, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff66b2;
+}
+
+.video-section {
+    margin-top: 90px; /* Ajuste o valor conforme necessário para aumentar o espaço */
+}
+
+.video-section .video {
+    width: 80%;
+    border: 2px solid #ff66b2;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #ff0099;
+    transition: transform 0.3s;
+}
+
+.video:hover {
+    transform: scale(1.02);
+}
+
+.footer {
+    width: 100%; 
+    padding: 30px; 
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)); 
+    box-shadow: 0 2px 10px rgba(255, 20, 147, 0.9); 
+    position: relative;
+    text-align: center; 
+    color: #ff66b2; 
+    font-family: 'Courier New', Courier, monospace; 
+    margin-top: 30px; 
+}
+
+.footer p {
+    font-size: 0.75em; 
+    font-weight: bold; 
+    letter-spacing: 5px; 
+    text-shadow: 
+        0 0 5px #ff66b2, 
+        0 0 10px #ff33cc, 
+        0 0 20px #ff0099; 
+    animation: glowing 1.5s infinite; 
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 
+            0 0 5px #ff66b2, 
+            0 0 10px #ff33cc, 
+            0 0 20px #ff0099;
+    }
+    50% {
+        text-shadow: 
+            0 0 15px #ff66b2, 
+            0 0 25px #ff33cc, 
+            0 0 30px #ff0099;
+    }
+    100% {
+        text-shadow: 
+            0 0 5px #ff66b2, 
+            0 0 10px #ff33cc, 
+            0 0 20px #ff0099;
+    }
+}
